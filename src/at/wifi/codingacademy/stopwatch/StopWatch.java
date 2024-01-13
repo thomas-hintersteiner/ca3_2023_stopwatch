@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class StopWatch {
     // Attribute
-    protected Date startTime = null;
-    protected Date stopTime = null;
+    protected long startTime = 0;
+    protected long stopTime = 0;
 
     // Konstruktoren
     public StopWatch() {
@@ -15,22 +15,22 @@ public class StopWatch {
     // Methoden (Funktion innerhalb einer Klasse)
 
     public void start() {
-        this.startTime = new Date();
+        this.startTime = System.currentTimeMillis();
     }
 
     public void stop() {
-        this.stopTime = new Date();
+        this.stopTime = System.currentTimeMillis();
     }
 
     public void reset() {
-        this.startTime = null;
-        this.stopTime = null;
+        this.startTime = 0;
+        this.stopTime = 0;
     }
 
     public long difference() {
-        // Nur wenn sowohl Startzeit und Stoppzeit gesetzt wurden und der Startzeitpunkt vor dem Stoppzeitpunkt liegt
-        if (this.startTime != null && this.stopTime != null && this.startTime.before(this.stopTime)) {
-            return this.stopTime.getTime() - this.startTime.getTime();
+        // Nur wenn Startzeitpunkt vor dem Stoppzeitpunkt liegt
+        if (this.startTime < this.stopTime) {
+            return this.stopTime - this.startTime;
         }
         return 0;
     }
