@@ -1,7 +1,4 @@
 package at.wifi.codingacademy.stopwatch;
-
-import java.util.Date;
-
 public class StopWatch {
     // Attribute
     protected long startTime = 0;
